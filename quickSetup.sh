@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt-get update && sudo apt-get upgrade
 sleep 2
-sudo apt-get install ranger vim qbittorrent vlc geany keepassx psensor feh macchanger zsh xfce4-terminal neofetch htop cmatrix i3 xfce4-screenshooter breeze-cursor-theme git wget curl nemo build-essential lxappearance -y
+sudo apt-get install ranger vim qbittorrent vlc geany keepassx psensor feh macchanger zsh xfce4-terminal neofetch htop cmatrix i3 xfce4-screenshooter breeze-cursor-theme git wget curl nemo build-essential lxappearance macchanger -y
 sleep 2
 ranger --copy-config=all
 cd /home/*/Downloads && git clone https://github.com/mitchfen/configs.git
