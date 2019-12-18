@@ -8,7 +8,7 @@ ranger --copy-config=all
 cd /home/*/Downloads && git clone https://github.com/mitchfen/configs.git
 cd configs
 mv .conkyrc /home/*
-mv .i3status-small.conf /home/*
+mv .mitchBar.conf /home/*
 mv .vimrc /home/*
 mv config /home/*/.config/i3
 cd .
