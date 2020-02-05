@@ -27,6 +27,8 @@ sudo make install
 cd ~/Downloads
 sudo rm -r i3-gaps
 
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Move config files to correct directories
 ranger --copy-config=all
