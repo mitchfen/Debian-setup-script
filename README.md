@@ -1,8 +1,10 @@
-# Debian-Setup-Script
+# mitchDebianScript
 
-This bash script configures a new Debian installation with all the programs and configuration files I need.  
+This bash script:
 
-It clones and compiles [i3-gaps](https://github.com/Airblader/i3) from source since it is not currently available through in the debian apt repository.  
+* Installs programs I use frequently
+* Clones and compiles [i3-gaps](https://github.com/Airblader/i3) from source since it is not currently available through the Debian apt repositories.  
+* Clones my dotfiles and moves them to the correct directories
 
 I plan to update the script to detect the distribution and alter the apt-get commands such that it is compatible with Linux Mint and Ubuntu as well.  
 
