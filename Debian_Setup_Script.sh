@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Tested this on Debian 10 Buster
+# TODO: Add error checking
+
 # Update distro
 sudo apt-get update && sudo apt-get upgrade
 
@@ -14,7 +17,7 @@ sudo snap install spotify
 sudo snap install code --classic
 sudo snap install signal-desktop
 
-# Build i3-gaps from source - not in Debian apt repository
+# Build i3-gaps from source since it is not in the Debian apt repository
 cd ~/Downloads
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps
@@ -30,18 +33,22 @@ sudo rm -r i3-gaps
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Move config files to correct directories
+# Create default ranger configuration files - usually I mess with this later manually
 ranger --copy-config=all
-cd ~/Downloads && git clone https://github.com/mitchfen/configs.git
-cd configs
+
+# Clone my dotfiles from github and move them where they need to be
+cd ~/Downloads && git clone https://github.com/mitchfen/dotfiles.git
+cd dotfiles
 mv i3 ~/.config
 mv .vimrc ~/
 mv .zshrc ~/
 
 # Cleanup and finishing touches
-cd .
-sudo rm -r configs
+cd ..
+sudo rm -r dotfiles
 sudo update-grub
+
+# Probably not necessary but why it can't hurt
 sudo apt autoremove -y
 
 # Pretty neofetch goodness
