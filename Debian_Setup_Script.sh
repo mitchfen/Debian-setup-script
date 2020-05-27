@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Tested this on Debian 10 Buster
-# TODO: Add error checking
 
 # Update distro
 sudo apt-get update && sudo apt-get upgrade
@@ -12,10 +11,13 @@ sudo apt-get install ranger vim vlc keepassxc psensor feh zsh xfce4-terminal neo
 # May be redundant but need to ensure these are present for i3-gaps
 sudo apt-get install gcc make dh-autoreconf libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-shape0 libxcb-shape0-dev
 
+
+# Configure git
+git config --global credential.helper cache
+
 # Install snap packages
 sudo snap install spotify
 sudo snap install code --classic
-sudo snap install signal-desktop
 
 # Build i3-gaps from source since it is not in the Debian apt repository
 cd ~/Downloads
@@ -42,6 +44,15 @@ cd dotfiles
 mv i3 ~/.config
 mv .vimrc ~/
 mv .zshrc ~/
+
+# Install signal (From https://signal.org/en/download/)
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+sudo apt update && sudo apt install signal-desktop
+
+# Fix the issue with Signal's chrome-sandbox
+sudo chown /opt/Signal/chrome-sandbox
+sudo chmod 4755 chrome-sandbox
 
 # Cleanup and finishing touches
 cd ..
